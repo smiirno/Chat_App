@@ -1,0 +1,23 @@
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+}
+
+input {
+    border: 1px solid #14213d;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.login_btn {
+    padding: 7px;
+    margin-top: 15px;
+    background: #14213d;
+    border: 1px solid #14213d;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
