@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {IChat} from "../../data/interfaces";
 import './chat.css'
 import {useAppDispatch, useAppSelector} from "../../store/redux";
@@ -7,6 +7,7 @@ import {Formik, Form} from 'formik';
 import {Button, TextField} from "@mui/material";
 import * as yup from "yup";
 import {removeChat} from "../../store/reducers/chats_slice";
+
 
 type chatProps = {
     chat: IChat
@@ -17,7 +18,6 @@ const Chat = (props: chatProps) => {
     const [isChatSelected, setIsChatSelected] = useState<boolean>(false)
     const [wrongPassword, setWrongPassword] = useState<string>('');
     const {chats} = useAppSelector(state => state.chatsReducer)
-    // const {currentChat} = useAppSelector(state => state.currentChatReducer)
 
     const dispatch = useAppDispatch()
 
@@ -53,7 +53,6 @@ const Chat = (props: chatProps) => {
                     onSubmit={values => {
                         if (values.password === props.chat.password) {
                             setIsChatSelected(true)
-                            // dispatch(selectChat(props.chat))
                         } else {
                             setWrongPassword('Неверный пароль')
                         }
@@ -71,7 +70,6 @@ const Chat = (props: chatProps) => {
                     )}
                 </Formik>
             }
-
         </div>
     );
 };

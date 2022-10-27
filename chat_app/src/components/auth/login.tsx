@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
 import * as yup from 'yup';
 import {useAppDispatch} from "../../store/redux";
-import './login.css'
 import {Button, TextField} from "@mui/material";
 import {login, registration} from "../../store/reducers/user_slice";
 import {users_db} from "../../data/db";
@@ -10,6 +9,7 @@ import {useNavigate} from "react-router-dom";
 import {isUserInDB} from "../../functions/isUserInDB";
 import {getUserFromDB} from "../../functions/getUserFromDB";
 import {checkPassword} from "../../functions/checkPassword";
+import './login.css'
 
 
 const Login = () => {
