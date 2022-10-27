@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {IChat, IMessage, IUser} from "../../data/interfaces";
+import React from 'react';
+import {IChat, IMessage} from "../../data/interfaces";
 import './chat_menu.css';
 import {Formik, Form} from 'formik';
 import * as yup from "yup";
@@ -62,7 +62,6 @@ const ChatMenu = (props: chatProps) => {
                     validationSchema={validationSchema}
                     onSubmit={(values) => {
                         const message: IMessage = createMessage(values.text, props.chat, currentUser)
-                        // dispatch(addMessage(message))
                         dispatch(updateChatMessages(message))
                     }}
                 >

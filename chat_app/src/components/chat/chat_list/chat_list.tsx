@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../store/redux";
 import Chat from "../chat";
 import {searchChat} from "../../../functions/searchChat";
-import './chat_list.css'
 import {Formik, Form} from 'formik';
 import * as yup from 'yup';
 import {Button, TextField} from "@mui/material";
 import {addChat} from "../../../store/reducers/chats_slice";
 import {isNumOfRoomCreated} from "../../../functions/isNumOfRoomCreated";
+import './chat_list.css'
 
 
 const ChatList = () => {

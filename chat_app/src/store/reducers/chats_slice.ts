@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IChat, IMessage, IUser} from "../../data/interfaces";
+import {IChat, IMessage} from "../../data/interfaces";
 
 
 interface ChatsState {
