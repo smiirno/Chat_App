@@ -11,6 +11,7 @@ type chatProps = {
 const ChatMenu = (props: chatProps) => {
 
     const {currentUser} = useAppSelector(state => state.currentUserReducer)
+    console.log(currentUser)
 
     return (
         <div className={'chat_menu'}>

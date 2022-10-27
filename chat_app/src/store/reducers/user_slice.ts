@@ -9,9 +9,9 @@ interface CurrentUserState {
 
 const initialState: CurrentUserState = {
     currentUser: {
-        id: 0,
-        nickname: 'test',
-        password: 'test'
+        id: -1,
+        nickname: '',
+        password: ''
     }
 }
 
@@ -25,9 +25,12 @@ export const currentUserSlice = createSlice({
         registration (state, action: PayloadAction<IUser>) {
             users_db.push(action.payload)
             state.currentUser = action.payload
+        },
+        logout(state) {
+            state.currentUser = initialState.currentUser
         }
     }
 })
 
-export const {login, registration} = currentUserSlice.actions
+export const {login, registration, logout} = currentUserSlice.actions
 export default currentUserSlice.reducer

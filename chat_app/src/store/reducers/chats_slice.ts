@@ -28,8 +28,8 @@ const initialState: ChatsState = {
                     id: 1,
                     owner: {
                         id: 1,
-                        nickname: 'test User',
-                        password: 'testUser'
+                        nickname: 'test',
+                        password: 'test'
                     },
                     text: 'Привет, хорошо, как у тебя?',
                     date: Date.now()
