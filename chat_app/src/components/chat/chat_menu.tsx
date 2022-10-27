@@ -1,7 +1,12 @@
-import React from 'react';
-import {IChat} from "../../data/interfaces";
+import React, {useState} from 'react';
+import {IChat, IMessage, IUser} from "../../data/interfaces";
 import './chat_menu.css';
-import {useAppSelector} from "../../store/redux";
+import {Formik, Form} from 'formik';
+import * as yup from "yup";
+import {useAppDispatch, useAppSelector} from "../../store/redux";
+import {Button, TextField} from "@mui/material";
+import {createMessage} from "../../functions/createMessage";
+import {updateChatMessages} from "../../store/reducers/chats_slice";
 
 
 type chatProps = {
@@ -11,7 +16,13 @@ type chatProps = {
 const ChatMenu = (props: chatProps) => {
 
     const {currentUser} = useAppSelector(state => state.currentUserReducer)
-    console.log(currentUser)
+
+    const dispatch = useAppDispatch()
+
+    const validationSchema = yup.object({
+        text: yup.string()
+            .required('Поле не может быть пустым')
+    })
 
     return (
         <div className={'chat_menu'}>
@@ -44,13 +55,28 @@ const ChatMenu = (props: chatProps) => {
                  })}
              </div>
             <div>
-                <form>
-                    <input type={'file'}/>
-                    <div className={'message_form'}>
-                        <textarea rows={2}/>
-                        <button className={'send_btn'}>Отправить</button>
-                    </div>
-                </form>
+                <Formik
+                    initialValues={{
+                        text: ''
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={(values) => {
+                        const message: IMessage = createMessage(values.text, props.chat, currentUser)
+                        // dispatch(addMessage(message))
+                        dispatch(updateChatMessages(message))
+                    }}
+                >
+                    {formik => (
+                        <Form onSubmit={formik.handleSubmit} className={'message_form'}>
+                            <TextField name={'text'} id={'text'} placeholder={'Сообщение'} size={'small'} multiline fullWidth
+                                       maxRows={3} onChange={formik.handleChange}
+                                       error={formik.touched.text && Boolean(formik.errors.text)}
+                                       helperText={formik.touched.text && formik.errors.text}
+                            />
+                            <Button type={'submit'} color="primary" variant="contained">Отправить</Button>
+                        </Form>
+                    )}
+                </Formik>
             </div>
         </div>
     );

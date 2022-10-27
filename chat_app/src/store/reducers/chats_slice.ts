@@ -7,53 +7,7 @@ interface ChatsState {
 }
 
 const initialState: ChatsState = {
-    chats: [
-        // {
-        //     id: 1,
-        //     numberOfRoom: 1337,
-        //     password: 'some password',
-        //     users: [],
-        //     messages: [
-        //         {
-        //             id: 0,
-        //             owner: {
-        //                 id: 0,
-        //                 nickname: 'admin',
-        //                 password: 'admin'
-        //             },
-        //             text: 'Привет, как дела?',
-        //             date: Date.now()
-        //         },
-        //         {
-        //             id: 1,
-        //             owner: {
-        //                 id: 1,
-        //                 nickname: 'test',
-        //                 password: 'test'
-        //             },
-        //             text: 'Привет, хорошо, как у тебя?',
-        //             date: Date.now()
-        //         },
-        //         {
-        //             id: 2,
-        //             owner: {
-        //                 id: 0,
-        //                 nickname: 'admin',
-        //                 password: 'admin'
-        //             },
-        //             text: 'Все отлично!',
-        //             date: Date.now()
-        //         }
-        //     ]
-        // },
-        // {
-        //     id: 2,
-        //     numberOfRoom: 1946,
-        //     password: 'password',
-        //     users: [],
-        //     messages: []
-        // }
-    ]
+    chats: []
 }
 
 export const chatsSlice = createSlice({
@@ -65,9 +19,16 @@ export const chatsSlice = createSlice({
         },
         removeChat (state, action: PayloadAction<IChat>) {
             state.chats = state.chats.filter(chat => chat.id !== action.payload.id)
+        },
+        updateChatMessages (state, action: PayloadAction<IMessage>) {
+            for (let i = 0; i < state.chats.length; i++) {
+                if (state.chats[i].numberOfRoom === action.payload.numberOfRoom) {
+                    state.chats[i].messages.push(action.payload)
+                }
+            }
         }
     }
 })
 
-export const {addChat, removeChat} = chatsSlice.actions
+export const {addChat, removeChat, updateChatMessages} = chatsSlice.actions
 export default chatsSlice.reducer

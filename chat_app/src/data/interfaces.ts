@@ -5,7 +5,8 @@ export interface IUser {
 }
 
 export interface IMessage {
-    id: number
+    id: number,
+    numberOfRoom: number,
     owner: IUser,
     text: string,
     date: number

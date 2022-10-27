@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {IChat} from "../../data/interfaces";
 import './chat.css'
-import {Link, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../store/redux";
-import {selectChat} from "../../store/reducers/current_chat_slice";
 import ChatMenu from "./chat_menu";
 import {Formik, Form} from 'formik';
 import {Button, TextField} from "@mui/material";
@@ -19,6 +17,7 @@ const Chat = (props: chatProps) => {
     const [isChatSelected, setIsChatSelected] = useState<boolean>(false)
     const [wrongPassword, setWrongPassword] = useState<string>('');
     const {chats} = useAppSelector(state => state.chatsReducer)
+    // const {currentChat} = useAppSelector(state => state.currentChatReducer)
 
     const dispatch = useAppDispatch()
 
@@ -54,6 +53,7 @@ const Chat = (props: chatProps) => {
                     onSubmit={values => {
                         if (values.password === props.chat.password) {
                             setIsChatSelected(true)
+                            // dispatch(selectChat(props.chat))
                         } else {
                             setWrongPassword('Неверный пароль')
                         }
@@ -70,11 +70,6 @@ const Chat = (props: chatProps) => {
                         </Form>
                     )}
                 </Formik>
-                // <form onSubmit={event => submitHandler(event)} style={{marginTop: 10}}>
-                //     <TextField type={'text'} placeholder={'Пароль'} style={{marginRight: 15}} size={'small'}/>
-                //     <Button type={'submit'} color="primary" variant="contained" style={{marginRight: 15}}>Присоединиться</Button>
-                //     <Button type={'submit'} color="error" variant="contained">Удалить</Button>
-                // </form>
             }
 
         </div>
