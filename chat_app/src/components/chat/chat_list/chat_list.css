@@ -1,5 +1,6 @@
 .chat_form {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: space-between;
+    margin-top: 10px;
 }

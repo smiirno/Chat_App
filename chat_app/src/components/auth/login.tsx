@@ -39,7 +39,6 @@ const Login = () => {
                 validationSchema={validationSchema}
                 onSubmit={(values, { resetForm }) => {
                     if (isUserInDB(values.nickname, users_db)) {
-                        console.log('use log')
                         if (checkPassword(values.nickname, values.password, users_db)) {
                             const user = getUserFromDB(values.nickname, users_db)
                             dispatch(login(user))
@@ -49,7 +48,6 @@ const Login = () => {
                             setWrongPassword('Неверный пароль')
                         }
                     } else {
-                        console.log('use reg')
                         const user = {
                             id: users_db.length,
                             ...values
@@ -71,8 +69,8 @@ const Login = () => {
 
                             <TextField name={'password'} id={'password'} placeholder={'Пароль'} style={{marginRight: 10}}
                                        onChange={formik.handleChange}
-                                       error={formik.touched.password && Boolean(formik.errors.password) || Boolean(wrongPassword)}
-                                       helperText={formik.touched.password && formik.errors.password || wrongPassword} size={'small'}
+                                       error={formik.touched.password && Boolean(formik.errors.password) || formik.touched.password && Boolean(wrongPassword)}
+                                       helperText={formik.touched.password && formik.errors.password || formik.touched.password && wrongPassword} size={'small'}
                             />
                         </div>
                         <Button type="submit" style={{marginTop: 10}} color="primary" variant="contained">Войти</Button>

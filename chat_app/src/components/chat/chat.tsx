@@ -5,6 +5,10 @@ import {Link, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../store/redux";
 import {selectChat} from "../../store/reducers/current_chat_slice";
 import ChatMenu from "./chat_menu";
+import {Formik, Form} from 'formik';
+import {Button, TextField} from "@mui/material";
+import * as yup from "yup";
+import {removeChat} from "../../store/reducers/chats_slice";
 
 type chatProps = {
     chat: IChat
@@ -12,45 +16,65 @@ type chatProps = {
 
 const Chat = (props: chatProps) => {
 
-    // const dispatch = useAppDispatch()
-    // const {currentChat} = useAppSelector(state => state.currentChatReducer)
-    //
-    // let navigate = useNavigate()
-    //
-    // useEffect(() => {
-    //     dispatch(selectChat(props.chat))
-    //     console.log(currentChat)
-    // }, [props.chat])
-    //
-    // const click = () => {
-    //
-    // }
-
     const [isChatSelected, setIsChatSelected] = useState<boolean>(false)
+    const [wrongPassword, setWrongPassword] = useState<string>('');
+    const {chats} = useAppSelector(state => state.chatsReducer)
 
-    const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-        // navigate(`/${props.chat.numberOfRoom}`)
-        setIsChatSelected(true)
+    const dispatch = useAppDispatch()
+
+    const removeChatFromList = () => {
+        dispatch(removeChat(props.chat))
+        console.log(chats)
     }
 
     const closeChat = () => {
         setIsChatSelected(false)
+        setWrongPassword('')
     }
+
+    const validationSchema = yup.object({
+        password: yup.string()
+            .required('Введите пароль')
+    })
 
     return (
         <div className={'chat'}>
             <h4>Номер комнаты: {props.chat.numberOfRoom}</h4>
             {isChatSelected ?
-                <div>
-                    <button onClick={closeChat} className={'login_btn'}>Выйти</button>
+                <div style={{marginTop: 10}}>
+                    <Button onClick={closeChat} color="primary" variant="contained">Выйти</Button>
                     <ChatMenu chat={props.chat}/>
                 </div>
                 :
-                <form onSubmit={event => submitHandler(event)}>
-                    <input type={'text'} placeholder={'Пароль'} style={{marginRight: 15}}/>
-                    <button type={'submit'} className={'login_btn'}>Присоединиться</button>
-                </form>
+                <Formik
+                    initialValues = {{
+                        password: ''
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={values => {
+                        if (values.password === props.chat.password) {
+                            setIsChatSelected(true)
+                        } else {
+                            setWrongPassword('Неверный пароль')
+                        }
+                    }}
+                >
+                    {formik => (
+                        <Form onSubmit={formik.handleSubmit} style={{marginTop: 10}}>
+                            <TextField name={'password'} id={'password'} placeholder={'Пароль'} style={{marginRight: 15}}
+                                       onChange={formik.handleChange}
+                                       error={Boolean(wrongPassword)}
+                                       helperText={wrongPassword} size={'small'}/>
+                            <Button type={'submit'} color="primary" variant="contained" style={{marginRight: 15}}>Присоединиться</Button>
+                            <Button onClick={removeChatFromList} color="error" variant="contained">Удалить</Button>
+                        </Form>
+                    )}
+                </Formik>
+                // <form onSubmit={event => submitHandler(event)} style={{marginTop: 10}}>
+                //     <TextField type={'text'} placeholder={'Пароль'} style={{marginRight: 15}} size={'small'}/>
+                //     <Button type={'submit'} color="primary" variant="contained" style={{marginRight: 15}}>Присоединиться</Button>
+                //     <Button type={'submit'} color="error" variant="contained">Удалить</Button>
+                // </form>
             }
 
         </div>
