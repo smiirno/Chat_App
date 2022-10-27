@@ -8,7 +8,7 @@ export interface IMessage {
     id: number
     owner: IUser,
     text: string,
-    date: Date
+    date: number
 }
 
 export interface IChat {

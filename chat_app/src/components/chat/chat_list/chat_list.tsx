@@ -16,7 +16,6 @@ const ChatList = () => {
         setCurrentSearchedValue(event.currentTarget.value)
     }
 
-
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         console.log('It works')

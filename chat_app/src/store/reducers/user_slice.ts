@@ -8,7 +8,11 @@ interface CurrentUserState {
 }
 
 const initialState: CurrentUserState = {
-    currentUser: {id: 0, nickname: 'test', password: 'test'}
+    currentUser: {
+        id: 0,
+        nickname: 'test',
+        password: 'test'
+    }
 }
 
 export const currentUserSlice = createSlice({

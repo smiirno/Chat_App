@@ -9,16 +9,47 @@ interface ChatsState {
 const initialState: ChatsState = {
     chats: [
         {
-            id: 0,
+            id: 1,
             numberOfRoom: 1337,
-            password: 'string',
+            password: 'some password',
             users: [],
-            messages: []
+            messages: [
+                {
+                    id: 0,
+                    owner: {
+                        id: 0,
+                        nickname: 'admin',
+                        password: 'admin'
+                    },
+                    text: 'Привет, как дела?',
+                    date: Date.now()
+                },
+                {
+                    id: 1,
+                    owner: {
+                        id: 1,
+                        nickname: 'test User',
+                        password: 'testUser'
+                    },
+                    text: 'Привет, хорошо, как у тебя?',
+                    date: Date.now()
+                },
+                {
+                    id: 2,
+                    owner: {
+                        id: 0,
+                        nickname: 'admin',
+                        password: 'admin'
+                    },
+                    text: 'Все отлично!',
+                    date: Date.now()
+                }
+            ]
         },
         {
-            id: 1,
+            id: 2,
             numberOfRoom: 1946,
-            password: 'string',
+            password: 'password',
             users: [],
             messages: []
         }
