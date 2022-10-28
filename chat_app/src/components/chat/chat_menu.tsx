@@ -7,6 +7,7 @@ import {useAppDispatch, useAppSelector} from "../../store/redux";
 import {Button, TextField} from "@mui/material";
 import {createMessage} from "../../functions/createMessage";
 import {updateChatMessages} from "../../store/reducers/chats_slice";
+import {formatDate} from "../../functions/formatDate";
 
 
 type chatProps = {
@@ -42,7 +43,7 @@ const ChatMenu = (props: chatProps) => {
                              'message_block friend_message'
                          }>
                              <div className={'username'}>
-                                 {message.owner.nickname}
+                                 {message.owner.nickname + ' ' + message.date}
                              </div>
                              <div className={message.owner.id == currentUser.id ?
                                  'my_message_text' :

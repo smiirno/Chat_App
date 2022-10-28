@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAppSelector} from "../store/redux";
-import ChatList from "./chat/chat_list/chat_list";
+import ChatList from "./chat/chat_list";
 
 const StartMenu = () => {
 

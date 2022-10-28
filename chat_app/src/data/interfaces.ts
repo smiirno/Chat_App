@@ -9,7 +9,7 @@ export interface IMessage {
     numberOfRoom: number,
     owner: IUser,
     text: string,
-    date: number
+    date: string
 }
 
 export interface IChat {

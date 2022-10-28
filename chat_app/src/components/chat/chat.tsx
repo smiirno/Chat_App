@@ -23,7 +23,6 @@ const Chat = (props: chatProps) => {
 
     const removeChatFromList = () => {
         dispatch(removeChat(props.chat))
-        console.log(chats)
     }
 
     const closeChat = () => {
