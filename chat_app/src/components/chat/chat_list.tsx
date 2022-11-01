@@ -65,7 +65,7 @@ const ChatList = () => {
                                        error={formik.touched.numberOfRoom && Boolean(formik.errors.numberOfRoom) || formik.touched.numberOfRoom && Boolean(wrongNumberOfRoom)}
                                        helperText={formik.touched.numberOfRoom && formik.errors.numberOfRoom || formik.touched.numberOfRoom && wrongNumberOfRoom} size={"small"}/>
 
-                            <TextField name={'password'} id={'password'} placeholder={'Пароль'} style={{marginRight: 15}}
+                            <TextField type={'password'} name={'password'} id={'password'} placeholder={'Пароль'} style={{marginRight: 15}}
                                        onChange={formik.handleChange}
                                        error={formik.touched.password && Boolean(formik.errors.password)}
                                        helperText={formik.touched.password && formik.errors.password} size={'small'}/>

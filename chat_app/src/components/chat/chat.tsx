@@ -58,7 +58,7 @@ const Chat = (props: chatProps) => {
                 >
                     {formik => (
                         <Form onSubmit={formik.handleSubmit} style={{marginTop: 10}}>
-                            <TextField name={'password'} id={'password'} placeholder={'Пароль'} style={{marginRight: 15}}
+                            <TextField type={'password'} name={'password'} id={'password'} placeholder={'Пароль'} style={{marginRight: 15}}
                                        onChange={formik.handleChange}
                                        error={Boolean(wrongPassword)}
                                        helperText={wrongPassword} size={'small'}/>
