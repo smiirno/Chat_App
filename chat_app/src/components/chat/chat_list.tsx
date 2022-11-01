@@ -12,8 +12,8 @@ import './chat_list.css'
 
 const ChatList = () => {
 
-    const {chats} = useAppSelector(state => state.chatsReducer)
-    const {currentUser} = useAppSelector(state => state.currentUserReducer)
+    const {chats} = useAppSelector(state => state.chats)
+    const {currentUser} = useAppSelector(state => state.auth)
     const [wrongNumberOfRoom, setWrongNumberOfRoom] = useState<string>('');
 
     const dispatch = useAppDispatch()

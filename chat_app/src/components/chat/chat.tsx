@@ -17,7 +17,7 @@ const Chat = (props: chatProps) => {
 
     const [isChatSelected, setIsChatSelected] = useState<boolean>(false)
     const [wrongPassword, setWrongPassword] = useState<string>('');
-    const {chats} = useAppSelector(state => state.chatsReducer)
+    // const {chats} = useAppSelector(state => state.chats)
 
     const dispatch = useAppDispatch()
 

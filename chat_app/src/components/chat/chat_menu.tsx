@@ -16,7 +16,7 @@ type chatProps = {
 
 const ChatMenu = (props: chatProps) => {
 
-    const {currentUser} = useAppSelector(state => state.currentUserReducer)
+    const {currentUser} = useAppSelector(state => state.auth)
 
     const dispatch = useAppDispatch()
 
@@ -34,18 +34,18 @@ const ChatMenu = (props: chatProps) => {
                  </div>
 
                  {props.chat.messages.map((message) => {
-                     return <div key={message.id} className={message.owner.id == currentUser.id ?
+                     return <div key={message.id} className={message.owner.nickname == currentUser.nickname ?
                          'message' :
                          ''
                      }>
-                         <div className={message.owner.id == currentUser.id ?
+                         <div className={message.owner.nickname == currentUser.nickname ?
                              'message_block my_message' :
                              'message_block friend_message'
                          }>
                              <div className={'username'}>
                                  {message.owner.nickname + ' ' + message.date}
                              </div>
-                             <div className={message.owner.id == currentUser.id ?
+                             <div className={message.owner.nickname == currentUser.nickname ?
                                  'my_message_text' :
                                  'friend_message_text'
                              }>

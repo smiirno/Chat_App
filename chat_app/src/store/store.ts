@@ -9,20 +9,28 @@ import {
     REGISTER,
 } from 'redux-persist';
 import storageSession from 'redux-persist/lib/storage/session';
+import storage from 'redux-persist/lib/storage'
 import currentUserReducer from './reducers/user_slice';
 import chatsReducer from './reducers/chats_slice';
 
 
-const persistConfig = {
+const rootPersistConfig = {
     key: 'root',
+    storage: storage,
+    whitelist: ['auth', 'chats']
+}
+
+const authPersistConfig = {
+    key: 'auth',
     storage: storageSession
 }
 
 const rootReducer = combineReducers({
-    currentUserReducer, chatsReducer
+    auth: persistReducer(authPersistConfig, currentUserReducer),
+    chats: chatsReducer
 })
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
 
 export const setupStore = () => {
     return configureStore({

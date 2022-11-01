@@ -4,7 +4,7 @@ import ChatList from "./chat/chat_list";
 
 const StartMenu = () => {
 
-    const {currentUser} = useAppSelector(state => state.currentUserReducer)
+    const {currentUser} = useAppSelector(state => state.auth)
 
     return (
         <div className={'container'}>

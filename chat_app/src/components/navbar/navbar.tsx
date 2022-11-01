@@ -6,7 +6,7 @@ import {logout} from "../../store/reducers/user_slice";
 
 const Navbar = () => {
 
-    const {currentUser} = useAppSelector(state => state.currentUserReducer)
+    const {currentUser} = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
 
     const logoutHandler = () => {
