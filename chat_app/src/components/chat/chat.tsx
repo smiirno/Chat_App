@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {IChat} from "../../data/interfaces";
 import './chat.css'
-import {useAppDispatch, useAppSelector} from "../../store/redux";
+import {useAppDispatch} from "../../store/redux";
 import ChatMenu from "./chat_menu";
 import {Formik, Form} from 'formik';
 import {Button, TextField} from "@mui/material";
@@ -17,7 +17,6 @@ const Chat = (props: chatProps) => {
 
     const [isChatSelected, setIsChatSelected] = useState<boolean>(false)
     const [wrongPassword, setWrongPassword] = useState<string>('');
-    // const {chats} = useAppSelector(state => state.chats)
 
     const dispatch = useAppDispatch()
 
@@ -40,7 +39,7 @@ const Chat = (props: chatProps) => {
             <h4>Номер комнаты: {props.chat.numberOfRoom}</h4>
             {isChatSelected ?
                 <div style={{marginTop: 10}}>
-                    <Button onClick={closeChat} color="primary" variant="contained">Выйти</Button>
+                    <button onClick={closeChat} className={'leave_btn'}>Выйти</button>
                     <ChatMenu chat={props.chat}/>
                 </div>
                 :
@@ -63,8 +62,8 @@ const Chat = (props: chatProps) => {
                                        onChange={formik.handleChange}
                                        error={Boolean(wrongPassword)}
                                        helperText={wrongPassword} size={'small'}/>
-                            <Button type={'submit'} color="primary" variant="contained" style={{marginRight: 15}}>Присоединиться</Button>
-                            <Button onClick={removeChatFromList} color="error" variant="contained">Удалить</Button>
+                            <button type={'submit'} className={'connect_btn'}>Присоединиться</button>
+                            <button onClick={removeChatFromList} className={'remove_btn'}>Удалить</button>
                         </Form>
                     )}
                 </Formik>

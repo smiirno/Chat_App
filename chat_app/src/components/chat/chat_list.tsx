@@ -69,7 +69,7 @@ const ChatList = () => {
                                        onChange={formik.handleChange}
                                        error={formik.touched.password && Boolean(formik.errors.password)}
                                        helperText={formik.touched.password && formik.errors.password} size={'small'}/>
-                            <Button type="submit" color="primary" variant="contained">Создать</Button>
+                            <button type="submit" className={'create_btn'}>Создать</button>
                         </Form>
                     )}
                 </Formik>

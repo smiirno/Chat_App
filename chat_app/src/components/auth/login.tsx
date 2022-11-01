@@ -29,6 +29,8 @@ const Login = () => {
             .required('Введите пароль')
     })
 
+
+
     return (
         <div className={'container login'}>
             <Formik
@@ -61,7 +63,7 @@ const Login = () => {
                 {formik => (
                     <Form onSubmit={formik.handleSubmit}>
                         <div>
-                            <TextField name={'nickname'} id={'nickname'} placeholder={'Никнейм'} style={{marginRight: 10}}
+                            <TextField name={'nickname'} id={'nickname'} placeholder={'Никнейм'} className={'text_field'}
                                        onChange={formik.handleChange}
                                        error={formik.touched.nickname && Boolean(formik.errors.nickname)}
                                        helperText={formik.touched.nickname && formik.errors.nickname} size={'small'}
@@ -73,7 +75,7 @@ const Login = () => {
                                        helperText={formik.touched.password && formik.errors.password || formik.touched.password && wrongPassword} size={'small'}
                             />
                         </div>
-                        <Button type="submit" style={{marginTop: 10}} color="primary" variant="contained">Войти</Button>
+                        <button type="submit" className={'login_btn'}>Войти</button>
                     </Form>
                 )}
             </Formik>

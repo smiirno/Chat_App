@@ -73,7 +73,7 @@ const ChatMenu = (props: chatProps) => {
                                        error={formik.touched.text && Boolean(formik.errors.text)}
                                        helperText={formik.touched.text && formik.errors.text}
                             />
-                            <Button type={'submit'} color="primary" variant="contained">Отправить</Button>
+                            <button type={'submit'} className={'send_btn'}>Отправить</button>
                         </Form>
                     )}
                 </Formik>

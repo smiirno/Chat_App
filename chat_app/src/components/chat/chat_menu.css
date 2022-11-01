@@ -1,5 +1,5 @@
 .chat_menu {
-    border: 1px solid #14213d;
+    border: 1px solid #8E8D8A;
     border-radius: 10px;
     padding: 20px;
     margin: auto;
@@ -34,27 +34,33 @@
     margin-bottom: 5px;
 }
 
-.username {
+.my_message .username {
     font-size: 10px;
-    color: darkgray;
+    color: lightgray;
+    margin: 5px;
+}
+
+.friend_message .username {
+    font-size: 10px;
+    color: #8E8D8A;
     margin: 5px;
 }
 
 .my_message {
-    border: 1px solid #14213d;
+    border: 1px solid #E85A4F;
     border-radius: 10px 10px 0 10px;
-    background-color: #14213d;
+    background-color: #E85A4F;
 }
 
 .friend_message {
-    border: 1px solid #14213d;
+    border: 1px solid #D8C3A5;
     border-radius: 10px 10px 10px 0;
-    background-color: white;
+    background-color: #D8C3A5;
 }
 
 .friend_message_text {
     font-size: 16px;
-    color: #14213d;
+    color: white;
     margin: 5px;
 }
 
@@ -78,11 +84,11 @@ textarea {
 }
 
 .send_btn {
-    padding: 7px;
-    background: #14213d;
-    border: 1px solid #14213d;
-    border-radius: 5px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: #E85A4F;
     color: white;
-    font-size: 15px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }

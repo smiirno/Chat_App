@@ -1,6 +1,33 @@
 .chat {
-    border: 1px solid #14213d;
+    border: 1px solid #D8C3A5;
     border-radius: 10px;
     padding: 10px 20px;
     margin: 30px 0;
+}
+
+.chat h4 {
+    color: black;
+    font-weight: normal;
+}
+
+.connect_btn {
+    margin-right: 15px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: #E85A4F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove_btn, .leave_btn {
+    margin-right: 15px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: #8E8D8A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

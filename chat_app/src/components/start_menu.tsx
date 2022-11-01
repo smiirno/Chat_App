@@ -1,6 +1,7 @@
 import React from 'react';
 import {useAppSelector} from "../store/redux";
 import ChatList from "./chat/chat_list";
+import './start_menu.css'
 
 const StartMenu = () => {
 
@@ -11,7 +12,7 @@ const StartMenu = () => {
             {currentUser.nickname !== '' ?
                 <ChatList/>
                 :
-                <h1>Прежде, чем начать пользоваться Chat APP, вам необходимо войти в свой аккаунт</h1>
+                <h2 className={'helper_text'}>Прежде, чем начать пользоваться Chat APP, вам необходимо войти в свой аккаунт</h2>
             }
         </div>
     );

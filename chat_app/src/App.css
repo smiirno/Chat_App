@@ -4,7 +4,12 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #EAE7DC;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .container {
-  width: 70%;
+  width: 70vw;
   margin: auto;
 }
