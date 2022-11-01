@@ -29,7 +29,7 @@ const ChatList = () => {
         numberOfRoom: yup.number()
             .min(2, 'Минимум 2 символа')
             .required('Введите номер комнаты'),
-        password: yup.string()
+        passwordRoom: yup.string()
             .min(4, 'Минимум 4 символа')
             .required('Введите пароль')
     })
@@ -40,7 +40,7 @@ const ChatList = () => {
                 <Formik
                     initialValues={{
                         numberOfRoom : 0,
-                        password: ''
+                        passwordRoom: ''
                     }}
                     validationSchema={validationSchema}
                     onSubmit={(values => {
@@ -48,7 +48,7 @@ const ChatList = () => {
                             const chat = {
                                 id: chats.length,
                                 numberOfRoom: values.numberOfRoom,
-                                password: values.password,
+                                password: values.passwordRoom,
                                 users: [currentUser],
                                 messages: []
                             }
@@ -65,10 +65,10 @@ const ChatList = () => {
                                        error={formik.touched.numberOfRoom && Boolean(formik.errors.numberOfRoom) || formik.touched.numberOfRoom && Boolean(wrongNumberOfRoom)}
                                        helperText={formik.touched.numberOfRoom && formik.errors.numberOfRoom || formik.touched.numberOfRoom && wrongNumberOfRoom} size={"small"}/>
 
-                            <TextField type={'password'} name={'password'} id={'password'} placeholder={'Пароль'} style={{marginRight: 15}}
+                            <TextField type={'password'} name={'passwordRoom'} id={'passwordRoom'} placeholder={'Пароль'} style={{marginRight: 15}}
                                        onChange={formik.handleChange}
-                                       error={formik.touched.password && Boolean(formik.errors.password)}
-                                       helperText={formik.touched.password && formik.errors.password} size={'small'}/>
+                                       error={formik.touched.passwordRoom && Boolean(formik.errors.passwordRoom)}
+                                       helperText={formik.touched.passwordRoom && formik.errors.passwordRoom} size={'small'}/>
                             <button type="submit" className={'create_btn'}>Создать</button>
                         </Form>
                     )}
